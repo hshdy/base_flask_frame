@@ -5,27 +5,35 @@
 from flask import Flask
 from flask_restful import Api
 
-from api.v1.index import Index
+import settings
+from api.v1 import loading_rout
+from globals import GLOBAL
+from logger.logger_service import logger
+from  settings import SETTING
 
 
 def init_base():
-    # logger.info('start init base server')
-    print('start init base server')
+    logger.info('start init base server')
+
     # init_mysql()
     # init_mongo()
 
-    # logger.info('finish base server')
+    logger.info('finish base server')
 
 
 def init_web_service():
-    # logger.info('start init flask')
+    logger.debug('start init flask web service')
 
     app = Flask(__name__)
     api = Api(app)
 
-    api.add_resource(Index, '/index')
+    GLOBAL.set_flask_app(app)
+    GLOBAL.set_flask_api(api)
+    loading_rout()
+    # setting app config
+    app.config.from_object(settings.BaseConfig)
 
-    app.run("0.0.0.0", 8888, debug=True)
+    app.run("0.0.0.0", SETTING.LISTEN_PORT, debug=False)
 
 
 def init():
