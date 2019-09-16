@@ -4,14 +4,14 @@
 # data: 2019/8/26 14:51
 from logger.logger_service import logger
 
-class Const(object):
 
+class Const(object):
     def __new__(cls, *args, **kwargs):
         logger.error("forbid create new const object")
         raise Exception('forbid create new const object')
 
-    SYSTEM_NAME = 'top_kee'
-    sub_system = 'facebook'
+    SYSTEM_NAME = 'system_name'
+    SUB_SYSTEM = 'sub_system'
 
 
-const = Const()
+CONST = Const()

@@ -19,11 +19,10 @@ class BaseConfig(object):
         else use 
             current_app.config.get("CONFIG_TYPE").get(<target_config_type>).get("<config_name>")
     """
-    # 基础配置
+    # base config
+    ENV = 'development'  # let flask into development. value only “production” and “development”
     NNN = 1
     AAA = 0
-
-
 
     class TestConfig:
         # Test environment configuration

@@ -23,4 +23,5 @@ class Global:
     def get_flask_api(self):
         return self.__api
 
+
 GLOBAL = Global()
