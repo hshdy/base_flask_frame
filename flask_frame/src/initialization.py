@@ -7,6 +7,7 @@ from flask_restful import Api
 
 import settings
 from api.v1 import loading_rout
+from api.v1.requests_hook import RequestHook
 from globals import GLOBAL
 from logger.logger_service import logger
 from  settings import SETTING
@@ -29,7 +30,9 @@ def init_web_service():
 
     GLOBAL.set_flask_app(app)
     GLOBAL.set_flask_api(api)
+
     loading_rout()
+    RequestHook().init_hook()
     # setting app config
     app.config.from_object(settings.BaseConfig)
 
