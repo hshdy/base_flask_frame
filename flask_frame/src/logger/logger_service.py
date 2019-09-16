@@ -54,5 +54,11 @@ class Logger(object):
         self.logger.addHandler(sh)  # 把对象加到logger里
         self.logger.addHandler(handler)
 
+    def getLogger(self):
+        """
+        获取初始化后的Logger
+        :return:
+        """
+        return self.logger
 
-logger = Logger('./logger/log.log', level='debug')
+logger = Logger('./logger/log.log', level='debug').getLogger()

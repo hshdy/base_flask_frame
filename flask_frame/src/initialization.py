@@ -6,7 +6,6 @@ from flask import Flask
 from flask_restful import Api
 
 from api.v1.index import Index
-from logger.logger_service import logger
 
 
 def init_base():
@@ -26,7 +25,7 @@ def init_web_service():
 
     api.add_resource(Index, '/index')
 
-    app.run("0.0.0.0",8888,debug=True)
+    app.run("0.0.0.0", 8888, debug=True)
 
 
 def init():

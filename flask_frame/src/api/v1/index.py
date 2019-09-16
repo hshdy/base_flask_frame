@@ -4,10 +4,12 @@
 # data: 2019/8/26 15:18
 from flask_restful import Resource
 
+from logger.logger_service import logger
+
 
 class Index(Resource):
-
     def get(self):
-        # logger('enter into index view function')
-        print('enter into index view function')
+
+        logger.info('enter into index view function')
+
         return 'index page'
