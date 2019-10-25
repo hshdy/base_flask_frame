@@ -8,6 +8,7 @@ from logger.logger_service import logger
 class Global:
     __app = None
     __api = None
+    __mysql_wrapper = None
 
     def set_flask_app(self, app):
         logger.debug('set flask app to global')
@@ -22,6 +23,12 @@ class Global:
 
     def get_flask_api(self):
         return self.__api
+
+    def set_mysql_wrapper(self, mysql_wrapper):
+        self.__mysql_wrapper = mysql_wrapper
+
+    def get_mysql_wrapper(self):
+        return self.__mysql_wrapper
 
 
 GLOBAL = Global()

@@ -6,12 +6,11 @@ from logger.logger_service import logger
 
 
 class Const(object):
-    def __new__(cls, *args, **kwargs):
-        logger.error("forbid create new const object")
-        raise Exception('forbid create new const object')
+    def __setattr__(self, *_):
+        raise ValueError('Trying to change a constant value')
 
     SYSTEM_NAME = 'system_name'
     SUB_SYSTEM = 'sub_system'
 
-
+    CODE_UTF8 = 'utf-8'
 CONST = Const()

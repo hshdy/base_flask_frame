@@ -30,17 +30,29 @@ class BaseConfig(object):
         LISTEN_PORT = '9999'
         CURRENT = 'is Test config'
 
+        URL_MYSQL = 'mysql+pymysql://XXX:XXX@192.168.0.117/XXXX'
+        SQL_ECHO_SHOW = False
+        SYNC_INFO_INTERVAL = 86400.0
+
     class DevConfig:
         # Development environment configuration
         AAA = 222
         LISTEN_PORT = '8888'
         CURRENT = 'is Development config'
 
+        URL_MYSQL = 'mysql+pymysql://root:mysql@192.168.1.188/flask_frame_db'
+        SQL_ECHO_SHOW = False
+        SYNC_INFO_INTERVAL = 86400.0
+
     class ProConfig:
         # Product environment configuration
         AAA = 333
         LISTEN_PORT = '7777'
         CURRENT = 'is Product config'
+
+        URL_MYSQL = 'mysql://XXX:XXX@192.168.0.59/XXXX'
+        SQL_ECHO_SHOW = False
+        SYNC_INFO_INTERVAL = 86400.0
 
     # current_app.config.get("CONFIG_TYPE").get("dev")
     CONFIG_TYPE = {
