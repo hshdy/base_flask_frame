@@ -14,12 +14,8 @@ from sqlalchemy.orm import sessionmaker, scoped_session
 
 from const import CONST
 from logger.logger_service import logger
-
 from settings import SETTING
 
-
-
-from module.mysql_module import *
 
 class MysqlWrapper:
     def __init__(self):
@@ -28,7 +24,7 @@ class MysqlWrapper:
         self.session = None
         self.scope_session = None
 
-    def create_tables(self,Base):
+    def create_tables(self, Base):
         try:
             logger.info('creating sql tables.')
             Base.metadata.create_all(self.engine)
