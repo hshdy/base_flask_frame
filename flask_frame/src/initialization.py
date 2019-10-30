@@ -17,7 +17,7 @@ from wrapper.load_config import LocalConfigManager
 from wrapper.mysql_mapper import MysqlWrapper
 
 
-def init_setting_local():
+def init_config():
     service = LocalConfigManager()
     service.read_config()
     service.select_config()
@@ -42,7 +42,7 @@ def init_mysql():
 def init_base():
     logger.info('start init base server')
     try:
-        init_setting_local()
+        init_config()
         # init_etcd()
         init_mysql()
     except Exception as e:
