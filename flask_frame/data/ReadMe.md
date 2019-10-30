@@ -46,13 +46,6 @@
 
 ### 6、模块划分
     每个模块是一个微服务。
-    event 模块  --- 事件模块，核心调度模块
-    google 模块 --- googl业务相关
-    yahoo 模块  --- yahoo业务相关
-    facebook 模块 --- facebook 业务相关
-    statistics 模块 --- 统计相关
-    alilogger 模块  --- 阿里云日志
-    web 模块 --- php 实现
 
     划分原因：
         1、降低项目整体耦合
