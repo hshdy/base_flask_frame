@@ -1,0 +1,17 @@
+system_name:
+    sub_system:
+        debug_method: 0
+        listen_port: 55455
+        test_is_change: 0
+
+    global:
+      mysql:
+        mysql_max_overflow: 64
+        mysql_pool_recycle: 3600
+        mysql_pool_size: 64
+        mysql_url: mysql+pymysql://root:mysql@192.168.1.188/flask_frame_db
+      mongo:
+        mongo_password:
+        mongo_host: 192.168.1.188
+        mongo_username:
+        mongo_port: 27017

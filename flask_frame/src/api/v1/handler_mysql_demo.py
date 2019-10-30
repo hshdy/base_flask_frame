@@ -7,7 +7,7 @@
 # DATE: 2019/10/18-17:16
 --------------------------------------------
 """
-from flask import current_app, request
+from flask import request
 from flask_restful import Resource
 
 from globals import GLOBAL
@@ -20,8 +20,7 @@ class HandlerMysqlDemo(Resource):
         logger.info("enter into index api.request method is {}".format(request.method))
         mysql_wrapper = GLOBAL.get_mysql_wrapper()
         with mysql_wrapper.session_scope() as session:
-
-            session.add(UserInfo('10002','usa','0002'))
+            session.add(UserInfo('10002', 'usa', '0002'))
 
             # session.add_all([UserInfo('10001','us','0001')])
 

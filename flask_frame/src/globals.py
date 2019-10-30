@@ -9,6 +9,8 @@ class Global:
     __app = None
     __api = None
     __mysql_wrapper = None
+    __etcd_wrapper = None
+    __settings = None
 
     def set_flask_app(self, app):
         logger.debug('set flask app to global')
@@ -29,6 +31,18 @@ class Global:
 
     def get_mysql_wrapper(self):
         return self.__mysql_wrapper
+
+    def set_etcd_wrapper(self, etcd_wrapper):
+        self.__etcd_wrapper = etcd_wrapper
+
+    def get_ectd_wrapper(self):
+        return self.__etcd_wrapper
+
+    def set_settings(self, settings_dict):
+        self.__settings = settings_dict
+
+    def get_settings(self):
+        return self.__settings
 
 
 GLOBAL = Global()

@@ -12,7 +12,7 @@
 # from sqlalchemy import Column, Integer, String, ForeignKey
 # from sqlalchemy import DateTime
 #
-# from mapper.mysql_mapper import Base
+# from wrapper.mysql_mapper import Base
 #
 #
 # class ProductInfo(Base):

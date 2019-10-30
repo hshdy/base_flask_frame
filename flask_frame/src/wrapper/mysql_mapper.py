@@ -13,8 +13,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 
 from const import CONST
+from globals import GLOBAL
 from logger.logger_service import logger
-from settings import SETTING
 
 
 class MysqlWrapper:
@@ -33,8 +33,9 @@ class MysqlWrapper:
 
     def connect_mysql(self):
         try:
-            self.engine = create_engine('{}?charset=utf8'.format(SETTING.URL_MYSQL),
-                                        encoding=CONST.CODE_UTF8, echo=SETTING.SQL_ECHO_SHOW)
+            SETTING = GLOBAL.get_settings()
+            self.engine = create_engine('{}?charset=utf8'.format(SETTING.MYSQL_URL),
+                                        encoding=CONST.CODE_UTF8, echo=CONST.SQL_ECHO_SHOW)
             session_maker = sessionmaker(bind=self.engine)
             self.scope_session = scoped_session(session_maker)
         except Exception as e:

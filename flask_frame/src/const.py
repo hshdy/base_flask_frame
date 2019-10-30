@@ -11,6 +11,9 @@ class Const(object):
 
     SYSTEM_NAME = 'system_name'
     SUB_SYSTEM = 'sub_system'
+    DEBUG_METHOD = "debug_method"
+    ETCD_RECONNECT_WAIT_TIME = 3
 
     CODE_UTF8 = 'utf-8'
+    SQL_ECHO_SHOW = False
 CONST = Const()

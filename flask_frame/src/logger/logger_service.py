@@ -64,4 +64,4 @@ class Logger(object):
         return self.logger
 
 
-logger = Logger(level='debug').getLogger()
+logger = Logger(level='info').getLogger()
