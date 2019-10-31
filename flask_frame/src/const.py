@@ -14,6 +14,13 @@ class Const(object):
     DEBUG_METHOD = "debug_method"
     ETCD_RECONNECT_WAIT_TIME = 3
 
+    RESULT = 'result'
+    STATUS = 'status'
+    SUCCESS = 'success'
+    FAILURE = 'failure'
+    ERROR_CODE = 'error_code'
+    REASON = 'reason'
+
     CODE_UTF8 = 'utf-8'
     SQL_ECHO_SHOW = False
 CONST = Const()

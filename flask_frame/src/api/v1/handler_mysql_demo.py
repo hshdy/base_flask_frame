@@ -23,5 +23,4 @@ class HandlerMysqlDemo(Resource):
             session.add(UserInfo('10002', 'usa', '0002'))
 
             # session.add_all([UserInfo('10001','us','0001')])
-
         return 'index page'

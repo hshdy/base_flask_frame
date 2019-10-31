@@ -2,11 +2,13 @@
 # author: hsh
 # file name: index.py
 # data: 2019/8/26 15:18
+from flask import jsonify
 from flask import request
 from flask_restful import Resource
 
 from globals import GLOBAL
 from logger.logger_service import logger
+from utils.response_data import success
 
 
 class Index(Resource):
@@ -17,5 +19,7 @@ class Index(Resource):
         logger.info('enter into index view function')
 
         test_is_change = SETTING.TEST_IS_CHANGE
-        print("test_is_change={}".format(test_is_change))
-        return 'index page'
+        logger.info("test_is_change={}".format(test_is_change))
+
+        data = success()
+        return jsonify(data)
