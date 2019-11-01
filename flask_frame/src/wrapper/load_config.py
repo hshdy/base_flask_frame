@@ -107,7 +107,7 @@ class LocalConfigManager():
         while True:
             try:
                 time.sleep(180)
-                logger.info('load ETCD config')
+                logger.debug('load ETCD config')
                 etcd_wrapper_server = EtcdWrapper(host=os.environ.get('ETCD_SERVICE_SERVICE_HOST', '127.0.0.1'),
                                                   port=int(os.environ.get('ETCD_SERVICE_SERVICE_PORT', '2379')))
                 # etcd_wrapper.connect_etcd_cluster()
@@ -118,7 +118,7 @@ class LocalConfigManager():
                 config_dict = etcd_wrapper_server.read_etcd_config_data()
                 settings_server.generate_settings_file(config_dict)
                 GLOBAL.set_settings(type("SETTING", (), config_dict))
-                logger.info('reload ETCD config success! ')
+                logger.debug('reload ETCD config success! ')
 
             except Exception as e:
                 logger.error(e)

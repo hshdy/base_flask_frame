@@ -12,7 +12,7 @@ from flask_restful import Resource
 
 from globals import GLOBAL
 from logger.logger_service import logger
-from module.mysql_module.table_module import UserInfo
+from models.mysql_module.table_module import UserInfo
 
 
 class HandlerMysqlDemo(Resource):

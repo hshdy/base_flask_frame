@@ -8,7 +8,7 @@
 
 # must install pytest
 
-in Terminal run:
+# in Terminal run:
     $ pytest -s test_index.py -v
 --------------------------------------------
 """

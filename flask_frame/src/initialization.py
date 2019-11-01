@@ -11,7 +11,7 @@ from api.v1 import loading_rout
 from api.v1.requests_hook import RequestHook
 from globals import GLOBAL
 from logger.logger_service import logger
-from module.mysql_module.table_module import Base
+from models.mysql_module.table_module import Base
 from wrapper.etcd_wrapper import EtcdWrapper
 from wrapper.load_config import LocalConfigManager
 from wrapper.mysql_mapper import MysqlWrapper
@@ -40,7 +40,7 @@ def init_mysql():
 
 
 def init_base():
-    logger.info('start init base server')
+    logger.info('start init base services')
     try:
         init_config()
         # init_etcd()
@@ -49,7 +49,7 @@ def init_base():
         logger.exception(e)
     # init_mongo()
 
-    logger.info('finish base server')
+    logger.info('finish base services')
 
 
 def init_web_service():
