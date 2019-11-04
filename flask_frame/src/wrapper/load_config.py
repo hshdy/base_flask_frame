@@ -28,34 +28,47 @@ class LocalConfigManager():
     def __init__(self):
         self.local_config_path = os.path.join(os.getcwd(), "config.yaml")
 
-    @staticmethod
-    def __get_config_dict(yaml_dict):
+    def __recursion_get_dict_kv(self, target_dict, input_dict: dict):
+        """
+        get the dict the innermost layer key and value. make up  new dict.
+        :param target_dict:
+        :param input_dict:
+        :return:
+        """
+        for info in input_dict:
+            if isinstance(input_dict[info], dict):
+                self.__recursion_get_dict_kv(target_dict, input_dict[info])
+            else:
+                target_dict[info] = input_dict[info]
+
+        return target_dict
+
+    def __get_config_dict(self, yaml_dict):
         system_name_dict = yaml_dict.get(CONST.SYSTEM_NAME)
         config_dict = dict()
-        # todo： 优化处理，递归解析，当前没递归处理
-        for info in system_name_dict:
-            for key in system_name_dict[info]:
-                if isinstance(system_name_dict[info][key], dict):
-                    for son_key in system_name_dict[info][key]:
-                        config_dict[son_key.upper()] = system_name_dict[info][key][son_key]
-                else:
-                    config_dict[key.upper()] = system_name_dict[info][key]
+
+        config_dict = self.__recursion_get_dict_kv(config_dict, system_name_dict)
 
         return config_dict
 
-    @staticmethod
-    def __get_yaml_chain_info_list(yaml_dict: dict):
+    def __recursion_get_dict_key_china_value_info_list(self, target_dict_list: list, input_dict: dict,
+                                                       last_china: str = None):
+        for info in input_dict:
+
+            current_china = last_china + '/{}'.format(info) if last_china else '/{}'.format(info)
+            if isinstance(input_dict[info], dict):
+
+                self.__recursion_get_dict_key_china_value_info_list(target_dict_list, input_dict[info], current_china)
+            else:
+
+                target_dict_list.append({current_china: input_dict[info]})
+
+        return target_dict_list
+
+    def __get_yaml_chain_info_list(self, yaml_dict: dict):
         yaml_chain_list = []
-        for first_key in yaml_dict:
-            for sec_key in yaml_dict[first_key]:
-                for three_key in yaml_dict[first_key][sec_key]:
-                    if isinstance(yaml_dict[first_key][sec_key][three_key], dict):
-                        for four_key in yaml_dict[first_key][sec_key][three_key]:
-                            yaml_chain_list.append({"/{}/{}/{}/{}".format(first_key, sec_key, three_key, four_key):
-                                                        yaml_dict[first_key][sec_key][three_key][four_key]})
-                    else:
-                        yaml_chain_list.append({"/{}/{}/{}".format(first_key, sec_key, three_key):
-                                                    yaml_dict[first_key][sec_key][three_key]})
+
+        self.__recursion_get_dict_key_china_value_info_list(yaml_chain_list, yaml_dict)
 
         return yaml_chain_list
 
@@ -108,6 +121,14 @@ class LocalConfigManager():
             try:
                 time.sleep(180)
                 logger.debug('load ETCD config')
+
+                logger.info(
+                    'Connected to ETCD cluster: {}:{}'.format(
+                        os.environ.get('ETCD_SERVICE_SERVICE_HOST', '127.0.0.1'),
+                        int(os.environ.get('ETCD_SERVICE_SERVICE_PORT', '2379'))
+                    )
+                )
+
                 etcd_wrapper_server = EtcdWrapper(host=os.environ.get('ETCD_SERVICE_SERVICE_HOST', '127.0.0.1'),
                                                   port=int(os.environ.get('ETCD_SERVICE_SERVICE_PORT', '2379')))
                 # etcd_wrapper.connect_etcd_cluster()
