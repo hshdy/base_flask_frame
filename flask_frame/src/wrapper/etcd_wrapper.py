@@ -11,7 +11,7 @@ import time
 
 import etcd
 
-from const import CONST
+from __const import CONST
 from logger.logger_service import logger
 
 

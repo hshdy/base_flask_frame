@@ -5,7 +5,7 @@
 from logger.logger_service import logger
 
 
-class Global:
+class __Global:
     __app = None
     __api = None
     __mysql_wrapper = None
@@ -45,4 +45,4 @@ class Global:
         return self.__settings
 
 
-GLOBAL = Global()
+GLOBAL = __Global()

@@ -2,10 +2,9 @@
 # author: hsh
 # file name: const.py
 # data: 2019/8/26 14:51
-from logger.logger_service import logger
 
 
-class Const(object):
+class __Const(object):
     def __setattr__(self, *_):
         raise ValueError('Trying to change a constant value')
 
@@ -23,4 +22,6 @@ class Const(object):
 
     CODE_UTF8 = 'utf-8'
     SQL_ECHO_SHOW = False
-CONST = Const()
+
+
+CONST = __Const()

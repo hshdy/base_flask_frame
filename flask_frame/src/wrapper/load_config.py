@@ -13,7 +13,7 @@ import time
 
 import yaml
 
-from const import CONST
+from __const import CONST
 from globals import GLOBAL
 from logger.logger_service import logger
 from wrapper.etcd_wrapper import EtcdWrapper
@@ -121,13 +121,6 @@ class LocalConfigManager():
             try:
                 time.sleep(180)
                 logger.debug('load ETCD config')
-
-                logger.info(
-                    'Connected to ETCD cluster: {}:{}'.format(
-                        os.environ.get('ETCD_SERVICE_SERVICE_HOST', '127.0.0.1'),
-                        int(os.environ.get('ETCD_SERVICE_SERVICE_PORT', '2379'))
-                    )
-                )
 
                 etcd_wrapper_server = EtcdWrapper(host=os.environ.get('ETCD_SERVICE_SERVICE_HOST', '127.0.0.1'),
                                                   port=int(os.environ.get('ETCD_SERVICE_SERVICE_PORT', '2379')))

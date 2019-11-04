@@ -12,7 +12,7 @@ import contextlib
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, scoped_session
 
-from const import CONST
+from __const import CONST
 from globals import GLOBAL
 from logger.logger_service import logger
 
