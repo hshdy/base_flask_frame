@@ -20,12 +20,12 @@ class __Setting:
     ALI_CLOUD_LOG_STORE_NAME = str()  # xxxx
     MYSQL_POOL_SIZE = str()  # 64
     MONGO_PORT = str()  # 27017
-    CURRENT_SOURCE_IP = str()  # xxxx
+    ALI_CLOUD_LOG_PROJECT_NAME = str()  # xxxx
     OUR_PROJECT_NAME = str()  # xxxxx
     DEBUG_METHOD = str()  # 0
     LISTEN_PORT = str()  # 55455
     TK_LOGGER_MAPPER_REAL_NAME = str()  # xxxx
-    ALI_CLOUD_LOG_PROJECT_NAME = str()  # xxxx
+    CURRENT_SOURCE_IP = str()  # xxxx
     MYSQL_MAX_OVERFLOW = str()  # 64
     MONGO_USERNAME = str()  # 
 
