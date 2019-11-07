@@ -9,6 +9,7 @@ class __Global:
     __app = None
     __api = None
     __mysql_wrapper = None
+    __redis_conn = None
     __etcd_wrapper = None
     __settings = None
 
@@ -31,6 +32,12 @@ class __Global:
 
     def get_mysql_wrapper(self):
         return self.__mysql_wrapper
+
+    def set_redis_connect(self, redis_conn):
+        self.__redis_conn = redis_conn
+
+    def get_redis_connect(self):
+        return self.__redis_conn
 
     def set_etcd_wrapper(self, etcd_wrapper):
         self.__etcd_wrapper = etcd_wrapper

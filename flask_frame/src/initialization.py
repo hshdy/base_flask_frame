@@ -14,7 +14,8 @@ from logger.logger_service import logger
 from models.mysql_module.table_module import Base
 from wrapper.etcd_wrapper import EtcdWrapper
 from wrapper.load_config import LocalConfigManager
-from wrapper.mysql_mapper import MysqlWrapper
+from wrapper.mysql_wrapper import MysqlWrapper
+from wrapper.redis_wrapper import RedisWrapper
 
 
 def init_config():
@@ -39,12 +40,33 @@ def init_mysql():
     mysql_wrapper.create_tables(Base)
 
 
+def init_redis():
+    SETTING = GLOBAL.get_settings()
+
+    redis_wrapper = RedisWrapper()
+
+    if SETTING.REDIS_PASSWORD and len(SETTING.REDIS_PASSWORD) > 4:
+        redis_wrapper = redis_wrapper.connect_redis(
+            host=SETTING.REDIS_HOST,
+            port=SETTING.REDIS_PORT,
+            db=SETTING.REDIS_DB,
+            password=SETTING.REDIS_PASSWORD,
+            max_connections=SETTING.MAX_REDIS_CONNECTION)
+    else:
+        redis_wrapper = redis_wrapper.connect_redis(
+            host=SETTING.REDIS_HOST,
+            port=SETTING.REDIS_PORT,
+            db=SETTING.REDIS_DB,
+            max_connections=SETTING.MAX_REDIS_CONNECTION)
+    GLOBAL.set_redis_connect(redis_wrapper)
+
 def init_base():
     logger.info('start init base services')
     try:
         init_config()
         # init_etcd()
         init_mysql()
+        init_redis()
     except Exception as e:
         logger.exception(e)
     # init_mongo()
