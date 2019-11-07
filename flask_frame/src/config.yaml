@@ -1,7 +1,7 @@
 system_name:
     sub_system:
-        debug_method: 0
-        listen_port: 55455
+        debug_method: 1
+        listen_port: 7998
         test_is_change: 0
 
     global:

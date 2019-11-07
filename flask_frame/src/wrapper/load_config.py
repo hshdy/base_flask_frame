@@ -39,7 +39,7 @@ class LocalConfigManager():
             if isinstance(input_dict[info], dict):
                 self.__recursion_get_dict_kv(target_dict, input_dict[info])
             else:
-                target_dict[info] = input_dict[info]
+                target_dict[info.upper()] = input_dict[info]
 
         return target_dict
 
