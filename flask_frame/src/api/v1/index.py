@@ -10,8 +10,12 @@ from globals import GLOBAL
 from logger.logger_service import logger
 from utils.response_data import success
 
+from src.utils.parameter_decorator import Validate
+
 
 class Index(Resource):
+
+    @Validate.check_params(["pid"],"args")
     def get(self):
         logger.info("enter into index api.request method is {}".format(request.method))
         SETTING = GLOBAL.get_settings()
@@ -20,6 +24,8 @@ class Index(Resource):
 
         test_is_change = SETTING.TEST_IS_CHANGE
         logger.info("test_is_change={}".format(test_is_change))
+
+
 
         data = success()
         return jsonify(data)
