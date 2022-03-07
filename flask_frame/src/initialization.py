@@ -90,7 +90,7 @@ def init_web_service():
     # app.config.from_object(settings.BaseConfig)
 
     logger.info(app.url_map)
-    app.run("0.0.0.0", SETTING.LISTEN_PORT, debug=False)
+    app.run(host="0.0.0.0", port=SETTING.LISTEN_PORT, debug=False)
 
 
 def init():

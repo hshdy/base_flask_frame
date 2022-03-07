@@ -13,6 +13,7 @@ from flask_restful import Resource
 from globals import GLOBAL
 from logger.logger_service import logger
 from models.mysql_module.table_module import UserInfo
+from utils.api import biz_success
 
 
 class HandlerMysqlDemo(Resource):
@@ -23,4 +24,4 @@ class HandlerMysqlDemo(Resource):
             session.add(UserInfo('10002', 'usa', '0002'))
 
             # session.add_all([UserInfo('10001','us','0001')])
-        return 'index page'
+        return biz_success()

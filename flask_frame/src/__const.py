@@ -13,6 +13,10 @@ class __Const(object):
     DEBUG_METHOD = "debug_method"
     ETCD_RECONNECT_WAIT_TIME = 3
 
+    # 业务状态码
+    BIZ_CODE_OK = 0
+    BIZ_CODE_FAIL = 1
+
     RESULT = 'result'
     STATUS = 'status'
     SUCCESS = 'success'
@@ -22,6 +26,10 @@ class __Const(object):
 
     CODE_UTF8 = 'utf-8'
     SQL_ECHO_SHOW = False
+
+    # Common Const
+    DEFAULT_PAGE = 1
+    DEFAULT_PER_PAGE = 10
 
 
 CONST = __Const()
